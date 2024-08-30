@@ -81,7 +81,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ success() }}
         with:
-          name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+          name: OpenWrt_bin_${{ env.DEVICE_NAME }}_${{ env.FILE_DATE }}
           path: openwrt/bin
 
       - name: Upload firmware directory
