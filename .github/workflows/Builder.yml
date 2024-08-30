@@ -36,10 +36,8 @@ jobs:
           ln -sf openwrt $GITHUB_WORKSPACE/openwrt
 
       - name: Update feeds
-        working-directory: '$WORKS_DIR'
-        run: |
-          pwd $GITHUB_WORKSPACE
-          ls -l $GITHUB_WORKSPACE
+        run: ls -l
+          
           
        
           
