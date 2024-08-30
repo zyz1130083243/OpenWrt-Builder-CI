@@ -31,11 +31,9 @@ jobs:
           
       - name: Clone source code
         run: |
-          ls -l
-          chmod -x *
           git clone $REPO_URL -b $REPO_BRANCH $WORKS_DIR/openwrt
+          chmod -x *
           sudo cp * $WORKS_DIR/openwrt/
-          tree $WORKS_DIR/openwrt
       #      && mv feeds.config $WORKS_DIR/openwrt/feeds.config
       #     [ -e .config ] && mv .config $WORKS_DIR/openwrt/.config
       #     [ -e pre_compilation_operations.sh ] && mv pre_compilation_operations.sh $WORKS_DIR/openwrt/pre_compilation_operations.sh
