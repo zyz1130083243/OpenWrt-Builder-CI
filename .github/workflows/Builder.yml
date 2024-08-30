@@ -39,7 +39,7 @@ jobs:
         working-directory: ${{ env.WORKS_DIR }}
         run: |
           ls -l
-          [ -e feeds.config ] && feeds.config
+          [ -e feeds_config.sh ] && feeds_config.sh
           ./scripts/feeds update -a
 
       - name: Install feeds
