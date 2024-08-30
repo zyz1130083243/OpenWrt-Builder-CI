@@ -37,8 +37,10 @@ jobs:
 
       - name: Update feeds
         run: |
-          [ -e  ]
-          cd openwrt && ./scripts/feeds update -a
+          [ -e feeds.config ] && mv feeds.config openwrt/feeds.config
+          cd openwrt
+          chmod -x feeds.config && feeds.config
+          ./scripts/feeds update -a
 
       - name: Install feeds
         run: cd openwrt && ./scripts/feeds install -a
@@ -46,6 +48,7 @@ jobs:
       - name: Load config
         run: |
           [ -e .config ] && mv .config openwrt/.config
+          [ -e pre_compilation_operations.sh ] && mv pre_compilation_operations.sh openwrt/pre_compilation_operations.sh
           cd openwrt && make defconfig
 
       - name: Download package
@@ -74,7 +77,14 @@ jobs:
           rm -rf packages
           echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
-      - name: Upload
+      - name: Upload bin directory
+        uses: actions/upload-artifact@v4
+        if: ${{ success() }}
+        with:
+          name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+          path: openwrt/bin
+
+      - name: Upload firmware directory
         if: ${{ success() }}
         uses: actions/upload-artifact@v4
         with:
