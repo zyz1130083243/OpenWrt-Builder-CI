@@ -39,7 +39,7 @@ jobs:
         working-directory: ${{ env.WORKS_DIR }}
         run: |
           ls -l
-          [ -e feeds_config.sh ] && feeds_config.sh
+          [ -e feeds_config.sh ] && ./feeds_config.sh
           ./scripts/feeds update -a
 
       - name: Install feeds
@@ -49,7 +49,7 @@ jobs:
       - name: Load config
         working-directory: ${{ env.WORKS_DIR }}
         run: |
-          [ -e pre_compilation_operations.sh ] && pre_compilation_operations.sh
+          [ -e pre_compilation_operations.sh ] && ./pre_compilation_operations.sh
           make defconfig
 
       - name: Download package
