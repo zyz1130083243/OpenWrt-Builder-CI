@@ -1,8 +1,9 @@
 name: OpenWrt Builder
 
 on:
-  repository_dispatch:
   workflow_dispatch:
+  workflow_run:
+    
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
@@ -33,10 +34,12 @@ jobs:
       - name: Clone source code
         working-directory: /workspace
         run: |
-          pwd $GITHUB_WORKSPACE
-          # git clone $REPO_URL -b $REPO_BRANCH openwrt
-          # ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-          
+          git clone $REPO_URL -b $REPO_BRANCH openwrt
+          ls -l $GITHUB_WORKSPACE
+
+      - name: Update feeds
+        run: pwd $GITHUB_WORKSPACE
+       
           
           
           
