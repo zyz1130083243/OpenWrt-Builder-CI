@@ -30,13 +30,17 @@ jobs:
           free
           
       - name: Clone source code
-        working-directory: /workspace
         run: |
+          cd $WORKS_DIR
           git clone $REPO_URL -b $REPO_BRANCH openwrt
-          ls -l $GITHUB_WORKSPACE
+          ln -sf openwrt $GITHUB_WORKSPACE/openwrt
 
       - name: Update feeds
-        run: pwd $GITHUB_WORKSPACE
+        working-directory: $WORKS_DIR
+        run: |
+          pwd $GITHUB_WORKSPACE
+          ls -l $GITHUB_WORKSPACE
+          
        
           
           
