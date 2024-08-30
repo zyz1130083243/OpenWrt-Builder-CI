@@ -30,7 +30,7 @@ jobs:
           free
           
       - name: Clone source code
-        working-directory: $WORKS_DIR
+        working-directory: /workspace
         run: |
           ls -l $GITHUB_WORKSPACE
           # git clone $REPO_URL -b $REPO_BRANCH openwrt
