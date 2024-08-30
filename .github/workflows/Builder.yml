@@ -37,7 +37,7 @@ jobs:
 
       - name: Update feeds
         run: |
-          [ -e feeds.config ] && mv feeds.config openwrt/feeds.config
+          [ -e feeds_config ] && mv feeds_config openwrt/feeds_config
           cd openwrt
           chmod -x feeds.config && feeds.config
           ./scripts/feeds update -a
