@@ -2,8 +2,6 @@ name: OpenWrt Builder
 
 on:
   workflow_dispatch:
-  workflow_run:
-    
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
