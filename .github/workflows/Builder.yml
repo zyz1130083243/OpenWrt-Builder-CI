@@ -32,13 +32,14 @@ jobs:
       - name: Clone source code
         run: |
           git clone $REPO_URL -b $REPO_BRANCH $WORKS_DIR
+          sudo chown -R $USER:$GROUPS *
+          sudo chown -x *
           sudo cp * $WORKS_DIR/
           
       - name: Update feeds
         working-directory: ${{ env.WORKS_DIR }}
         run: |
           ls -l
-          sudo chmod -x feeds_config.sh
           ./feeds_config.sh
           ./scripts/feeds update -a
 
@@ -49,7 +50,6 @@ jobs:
       - name: Load config
         working-directory: ${{ env.WORKS_DIR }}
         run: |
-          sudo chmod -x pre_compilation_operations.sh
           ./pre_compilation_operations.sh
           make defconfig
 
