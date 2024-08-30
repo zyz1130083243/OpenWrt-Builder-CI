@@ -32,9 +32,9 @@ jobs:
       - name: Clone source code
         run: |
           git clone $REPO_URL -b $REPO_BRANCH $WORKS_DIR
-          sudo chown -R $USER:$GROUPS *
           sudo chmod -x *
-          sudo cp * $WORKS_DIR/
+          sudo mv * $WORKS_DIR/
+          sudo chown -R $USER:$GROUPS $WORKS_DIR
           
       - name: Update feeds
         working-directory: ${{ env.WORKS_DIR }}
