@@ -35,6 +35,7 @@ jobs:
           sudo chmod +x *
           sudo mv .config feeds_config.sh pre_compilation_operations.sh  $WORKS_DIR/
           sudo chown -R $USER:$GROUPS $WORKS_DIR
+          ls -l
           
       - name: Update feeds
         working-directory: ${{ env.WORKS_DIR }}
