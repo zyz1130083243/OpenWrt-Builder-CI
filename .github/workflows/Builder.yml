@@ -33,13 +33,12 @@ jobs:
         run: |
           git clone $REPO_URL -b $REPO_BRANCH $WORKS_DIR
           sudo chmod +x *
-          sudo mv * .* $WORKS_DIR/
+          sudo mv .config feeds_config.sh pre_compilation_operations.sh  $WORKS_DIR/
           sudo chown -R $USER:$GROUPS $WORKS_DIR
           
       - name: Update feeds
         working-directory: ${{ env.WORKS_DIR }}
         run: |
-          ls -l
           ./feeds_config.sh
           ./scripts/feeds update -a
 
